@@ -1,0 +1,57 @@
+<div class="panel-container">
+  <h2>
+    <span>Manage Themes</span>
+
+    <button id="create-entity" class="btn btn-primary float-right" *ngIf="create"[routerLink]="['new']">
+      <i class="fa fa-plus"></i>
+      <span>Create a Theme</span>
+    </button>
+  </h2>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="Themes?.length === 0">
+    <span>No Themes found</span>
+  </div>
+
+  <div class="table-responsive" id="ThemesTable" *ngIf="Themes?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col" ><span>ID</span></th>
+          <th scope="col" ><span>Title</span></th>
+          <th scope="col" ><span>Description</span></th>
+          <th scope="col" ><span>Nrº de Horas</span></th>
+          <th scope="col" ><span>Práticas</span></th>
+          <th scope="col" ><span>nome</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Theme of Themes ;trackBy: trackId">
+          <td><a [routerLink]="[Theme.id, 'view']">{{ Theme.id }}</a></td>
+          <td>{{ Theme.title }}</td>
+          <td>{{ Theme.description }}</td>
+          <td>{{ Theme.maxHours }}</td>
+          <td>{{ Theme.practice }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="[Theme.id, 'view']" class="btn btn-info btn-sm">
+                <i class="fa fa-eye"></i>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="[Theme.id, 'edit']" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil"></i>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(Theme)" class="btn btn-danger btn-sm">
+                <i class="fa fa-times"></i>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

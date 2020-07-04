@@ -6,5 +6,54 @@
       <i class="fa fa-plus"></i>
       <span>Create a Academic Study</span>
     </button>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="academics?.length === 0">
+      <span>No academics found</span>
+    </div>
+
+    <div class="table-responsive" id="projectsTable" *ngIf="academics?.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Activities</span></th>
+            <th scope="col" ><span>description</span></th>
+            <th scope="col" ><span>educationalInstitution</span></th>
+            <th scope="col" ><span>startDate</span></th>
+            <th scope="col" ><span>endDate</span></th>
+            <th scope="col" ><span>fieldOfStudy</span></th>
+            <th scope="col" ><span>formation</span></th>
+            <th scope="col" ><span>grade</span></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let a of academics ;trackBy: trackId">
+            <td><a [routerLink]="[a.id, 'view']">{{ a.id }}</a></td>
+            <td>{{ a.activities }}</td>
+            <td>{{ a.description }}</td>
+            <td>{{ a.educationalInstitution }}</td>
+            <td>{{ a.startDate }}</td>
+            <td>{{ a.endDate }}</td>
+            <td>{{ a.fieldOfStudy }}</td>
+            <td>{{ a.formation }}</td>
+            <td>{{ a.grade }}</td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button type="submit" [routerLink]="[a.id, 'view']" class="btn btn-info btn-sm">
+                  <i class="fa fa-eye"></i>
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+                <button type="submit" (click)="delete(a)" class="btn btn-danger btn-sm">
+                  <i class="fa fa-times"></i>
+                  <span class="d-none d-md-inline">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </h2>
 </div>

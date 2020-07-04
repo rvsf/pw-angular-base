@@ -1,0 +1,55 @@
+<div class="row justify-content-center panel-container">
+  <div class="col-8">
+    <div *ngIf="course">
+      <h2><span>Course</span> {{ course.id }}</h2>
+      <hr>
+      <dl class="row-md entity-details">
+        <dt><span >ID</span></dt>
+        <dd>
+          <span>{{ course.id }}</span>
+        </dd>
+        <dt><span >title</span></dt>
+        <dd>
+          <span>{{ course.title }}</span>
+        </dd>
+        <dt><span >description</span></dt>
+        <dd>
+          <span>{{ course.description }}</span>
+        </dd>
+        <dt><span >ect</span></dt>
+        <dd>
+          <span>{{ course.ect }}</span>
+        </dd>
+        <dt><span>Company Address</span></dt>
+        <dd>
+          <span>{{ course.maxHours }}</span>
+        </dd>
+        <dt><span>State</span></dt>
+        <dd>
+          <span>{{ course.practice }}</span>
+        </dd>
+        <dt><span>Themes</span></dt>
+        <dd *ngFor="let item of course.themes">
+          <span>{{ item.title+' - '+item.id }}</span>
+        </dd>
+        <dt><span>Teacher</span></dt>
+        <dd>
+          <div *ngIf="course.teacher.name; else elseTeacher" >
+            <span>{{ course.teacher.name+' - '+course.teacher.id  }}</span>
+          </div>
+          <ng-template #elseTeacher><span>
+            N/A
+          </span></ng-template>
+        </dd>
+      </dl>
+      </div>
+
+    <button type="submit" (click)="previousState()" class="btn btn-info margin-right-10">
+      <i class="fa fa-arrow-left"></i><span>Back</span>
+    </button>
+
+    <button type="button" [routerLink]="['/managecourses', course.id, 'edit']" class="btn btn-primary">
+      <i class="fa fa-pencil"></i><span>Edit</span>
+    </button>
+  </div>
+</div>

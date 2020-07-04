@@ -1,0 +1,104 @@
+<div class="panel-container">
+  <form [formGroup]="manageTeachersForm" (ngSubmit)="saveTeacher()">
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputName">Name</label>
+        <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('name').invalid && (manageTeachersForm.get('name').dirty || manageTeachersForm.get('name').touched) && manageTeachersForm.controls['name'].errors ? 'is-invalid' : ''"
+               id="inputName" placeholder="Name" formControlName="name">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('name').invalid && (manageTeachersForm.get('name').dirty || manageTeachersForm.get('name').touched)">
+          <span *ngIf="manageTeachersForm.controls['name'].hasError('required')">This field is required</span>
+          <span *ngIf="manageTeachersForm.controls['name'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputGender">Gender</label>
+        <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('gender').invalid && (manageTeachersForm.get('gender').dirty || manageTeachersForm.get('gender').touched) && manageTeachersForm.controls['gender'].errors ? 'is-invalid' : ''"
+               id="inputGender" placeholder="M/F" formControlName="gender">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('gender').invalid && (manageTeachersForm.get('gender').dirty || manageTeachersForm.get('gender').touched)">
+          <span *ngIf="manageTeachersForm.controls['gender'].hasError('required')">This field is required</span>
+          <span *ngIf="manageTeachersForm.controls['gender'].hasError('maxlength')">Max length of this field is 10 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputFormationYear">Formation Year</label>
+        <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('formationYear').invalid && (manageTeachersForm.get('formationYear').dirty || manageTeachersForm.get('formationYear').touched) && manageTeachersForm.controls['formationYear'].errors ? 'is-invalid' : ''"
+               id="inputFormationYear" placeholder="Formation Year" formControlName="formationYear">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('formationYear').invalid && (manageTeachersForm.get('formationYear').dirty || manageTeachersForm.get('formationYear').touched)">
+          <span *ngIf="manageTeachersForm.controls['formationYear'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputEmail">Email</label>
+        <input type="email" class="form-control" [ngClass]="manageTeachersForm.get('email').invalid && (manageTeachersForm.get('email').dirty || manageTeachersForm.get('email').touched) && manageTeachersForm.controls['email'].errors ? 'is-invalid' : ''"
+               id="inputEmail" placeholder="Email" formControlName="email">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('email').invalid && (manageTeachersForm.get('email').dirty || manageTeachersForm.get('email').touched)">
+          <span *ngIf="manageTeachersForm.controls['email'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputBio">biography</label>
+        <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('bio').invalid && (manageTeachersForm.get('bio').dirty || manageTeachersForm.get('bio').touched) && manageTeachersForm.controls['bio'].errors ? 'is-invalid' : ''"
+               id="inputBio" placeholder="Bio" formControlName="bio">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('bio').invalid && (manageTeachersForm.get('bio').dirty || manageTeachersForm.get('bio').touched)">
+          <span *ngIf="manageTeachersForm.controls['bio'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputresume">Resume</label>
+        <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('resume').invalid && (manageTeachersForm.get('resume').dirty || manageTeachersForm.get('resume').touched) && manageTeachersForm.controls['resume'].errors ? 'is-invalid' : ''"
+               id="inputresume" placeholder="Bio" formControlName="resume">
+        <div class="invalid-feedback" *ngIf="manageTeachersForm.get('resume').invalid && (manageTeachersForm.get('resume').dirty || manageTeachersForm.get('resume').touched)">
+          <span *ngIf="manageTeachersForm.controls['resume'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6 mb-6">
+          <label for="inputWorkingYear">Working Year</label>
+          <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('workingYear').invalid && (manageTeachersForm.get('workingYear').dirty || manageTeachersForm.get('workingYear').touched) && manageTeachersForm.controls['workingYear'].errors ? 'is-invalid' : ''"
+                 id="inputWorkingYear" placeholder="Working Year" formControlName="workingYear">
+          <div class="invalid-feedback" *ngIf="manageTeachersForm.get('workingYear').invalid && (manageTeachersForm.get('workingYear').dirty || manageTeachersForm.get('workingYear').touched)">
+            <span *ngIf="manageTeachersForm.controls['workingYear'].hasError('required')">This field is required</span>
+          </div>
+        </div>
+        <div class="form-group col-md-6 mb-6">
+          <label for="inputWorkingYear">Birthday date</label>
+          <input type="text" class="form-control" [ngClass]="manageTeachersForm.get('bday').invalid && (manageTeachersForm.get('bday').dirty || manageTeachersForm.get('bday').touched) && manageTeachersForm.controls['bday'].errors ? 'is-invalid' : ''"
+                 id="inputWorkingYear" placeholder="Working Year" formControlName="bday">
+          <div class="invalid-feedback" *ngIf="manageTeachersForm.get('bday').invalid && (manageTeachersForm.get('bday').dirty || manageTeachersForm.get('bday').touched)">
+            <span *ngIf="manageTeachersForm.controls['bday'].hasError('required')">This field is required</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form-group">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="personnelTeacherCheckBox" formControlName="personnelTeacher">
+        <label class="form-check-label" for="personnelTeacherCheckBox">
+          Personnel Teacher
+        </label>
+      </div>
+    </div> -->
+    <hr>
+    <div>
+      {{manageTeachersForm.invalid|json}}
+
+    </div>
+    <div class="row margin-top-10">
+      <div class="col-12">
+        <re-captcha formControlName="formRecaptcha"></re-captcha>
+      </div>
+    </div>
+    <div class="margin-top-20">
+      <button type="button" id="cancel-save" class="btn btn-secondary margin-right-10" (click)="previousState()">
+        <i class="fa fa-ban"></i><span>Cancel</span>
+      </button>
+      <button type="submit" id="save-entity" [disabled]="manageTeachersForm.invalid || isSaving" class="btn btn-primary">
+        <i class="fa fa-save"></i><span>Save</span>
+      </button>
+    </div>
+  </form>
+</div>

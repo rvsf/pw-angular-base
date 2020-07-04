@@ -1,0 +1,70 @@
+<div class="panel-container">
+  <h2>
+    <span>Manage Courses</span>
+
+    <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['new']">
+      <i class="fa fa-plus"></i>
+      <span>Create a Course</span>
+    </button>
+  </h2>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="courses?.length === 0">
+    <span>No courses found</span>
+  </div>
+
+  <div class="table-responsive" id="coursesTable" *ngIf="courses?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col" ><span>ID</span></th>
+          <th scope="col" ><span>Title</span></th>
+          <th scope="col" ><span>Description</span></th>
+          <th scope="col" ><span>ECT</span></th>
+          <th scope="col" ><span>Hours</span></th>
+          <th scope="col" ><span>Teacher</span></th>
+          <th class="text-center" scope="col" ><span>Themes</span></th>
+
+          <th class="text-center" scope="col" ><span>Practice</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses ;trackBy: trackId">
+          <td><a [routerLink]="[course.id, 'view']">{{ course.id }}</a></td>
+          <td>{{ course.title }}</td>
+          <td>{{ course.description }}</td>
+          <td>{{ course.ect }}</td>
+          <td>{{ course.maxHours }}</td>
+          <td>{{ course.teacher.name }}</td>
+          <td class="text-center">
+            <i class="fa" [ngClass]="(course.themes.length>0) ? 'fa-check' : 'fa-times'"></i>
+          </td>
+          <td class="text-center">
+              <i class="fa" [ngClass]="(course.practice) ? 'fa-check' : 'fa-times'"></i>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="[course.id, 'view']" class="btn btn-info btn-sm">
+                <i class="fa fa-eye"></i>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="[course.id, 'edit']" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil"></i>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(course)" class="btn btn-danger btn-sm">
+                <i class="fa fa-times"></i>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

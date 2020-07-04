@@ -17,16 +17,17 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { UniversityModule } from './university/university.module';
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyC6-rA7XKvbCSOe4UiMx6K2vQ5s8RsuoRY',
-  authDomain: 'ulht-my-linkedin-pap.firebaseapp.com',
-  databaseURL: 'https://ulht-my-linkedin-pap.firebaseio.com',
-  projectId: 'ulht-my-linkedin-pap',
-  storageBucket: 'ulht-my-linkedin-pap.appspot.com',
-  messagingSenderId: '483673379096',
-  appId: '1:483673379096:web:fd26f03c8b376ac245ce6d',
-  measurementId: 'G-44S3MK86FG'
+const firebaseConfig = {
+  apiKey: "AIzaSyAGzP9zeMUGgg3q98-v-y5Ji2iZPdlz5jA",
+  authDomain: "linkedinpw.firebaseapp.com",
+  databaseURL: "https://linkedinpw.firebaseio.com",
+  projectId: "linkedinpw",
+  storageBucket: "linkedinpw.appspot.com",
+  messagingSenderId: "755011464935",
+  appId: "1:755011464935:web:34b7f6c21bf13d29e27c42",
+  measurementId: "G-LYBYPWRZ8D"
 };
 
 @NgModule({
@@ -43,6 +44,8 @@ export const firebaseConfig = {
     HomeModule,
     ProjectModule,
     EducationModule,
+    UniversityModule,
+
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',
       preventDuplicates: true

@@ -1,0 +1,36 @@
+<div class="row justify-content-center panel-container">
+  <div class="col-8">
+    <div *ngIf="Theme">
+      <h2><span>Theme</span> {{ Theme.id }}</h2>
+      <hr>
+      <dl class="row-md entity-details">
+        <dt><span >ID</span></dt>
+        <dd>
+          <span>{{ Theme.id }}</span>
+        </dd>
+        <dt><span >Title</span></dt>
+        <dd>
+          <span>{{ Theme.title }}</span>
+        </dd>
+        <dt><span >Description</span></dt>
+        <dd>
+          <span>{{ Theme.description }}</span>
+        </dd>
+        <dt><span>Max Hours</span></dt>
+        <dd>
+          <span>{{ Theme.maxHours }}</span>
+        </dd>
+        <dt><span>Practice</span></dt>
+        <dd>
+          <span>{{ Theme.practice }}</span>
+        </dd>
+      </dl>
+
+
+      <button type="submit" (click)="previousState()" class="btn btn-info margin-right-10">
+        <i class="fa fa-arrow-left"></i><span>Back</span>
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+<div class="panel-container">
+  <form [formGroup]="manageAcademicsForm" (ngSubmit)="saveAcademic()">
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputFormation">formation</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('formation').invalid && (manageAcademicsForm.get('formation').dirty || manageAcademicsForm.get('formation').touched) && manageAcademicsForm.controls['formation'].errors ? 'is-invalid' : ''"
+               id="inputFormation" placeholder="Formation" formControlName="formation">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('formation').invalid && (manageAcademicsForm.get('formation').dirty || manageAcademicsForm.get('formation').touched)">
+          <span *ngIf="manageAcademicsForm.controls['formation'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['formation'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputFieldOfStudy">Field of Study</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('fieldOfStudy').invalid && (manageAcademicsForm.get('fieldOfStudy').dirty || manageAcademicsForm.get('fieldOfStudy').touched) && manageAcademicsForm.controls['fieldOfStudy'].errors ? 'is-invalid' : ''"
+               id="inputFieldOfStudy" placeholder="Field of Study" formControlName="fieldOfStudy">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('fieldOfStudy').invalid && (manageAcademicsForm.get('fieldOfStudy').dirty || manageAcademicsForm.get('fieldOfStudy').touched)">
+          <span *ngIf="manageAcademicsForm.controls['fieldOfStudy'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['fieldOfStudy'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 mb-12">
+        <label for="inputEducationalInstitution">Educational Institution</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('educationalInstitution').invalid && (manageAcademicsForm.get('educationalInstitution').dirty || manageAcademicsForm.get('educationalInstitution').touched) && manageAcademicsForm.controls['educationalInstitution'].errors ? 'is-invalid' : ''"
+               id="inputEducationalInstitution" placeholder="Educational Institution" formControlName="educationalInstitution">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('educationalInstitution').invalid && (manageAcademicsForm.get('educationalInstitution').dirty || manageAcademicsForm.get('educationalInstitution').touched)">
+          <span *ngIf="manageAcademicsForm.controls['educationalInstitution'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['educationalInstitution'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputStartDate">Start Date</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('startDate').invalid && (manageAcademicsForm.get('startDate').dirty || manageAcademicsForm.get('startDate').touched) && manageAcademicsForm.controls['startDate'].errors ? 'is-invalid' : ''"
+               id="inputStartDate" placeholder="Start Date" formControlName="startDate">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('startDate').invalid && (manageAcademicsForm.get('startDate').dirty || manageAcademicsForm.get('startDate').touched)">
+          <span *ngIf="manageAcademicsForm.controls['startDate'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['startDate'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputEndDate">endDate</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('endDate').invalid && (manageAcademicsForm.get('endDate').dirty || manageAcademicsForm.get('endDate').touched) && manageAcademicsForm.controls['endDate'].errors ? 'is-invalid' : ''"
+               id="inputEndDate" placeholder="endDate" formControlName="endDate">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('endDate').invalid && (manageAcademicsForm.get('endDate').dirty || manageAcademicsForm.get('endDate').touched)">
+          <span *ngIf="manageAcademicsForm.controls['endDate'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['endDate'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 mb-12">
+        <label for="inputGrade">Grade</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('grade').invalid && (manageAcademicsForm.get('grade').dirty || manageAcademicsForm.get('grade').touched) && manageAcademicsForm.controls['grade'].errors ? 'is-invalid' : ''"
+               id="inputGrade" placeholder="Grade" formControlName="grade">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('grade').invalid && (manageAcademicsForm.get('grade').dirty || manageAcademicsForm.get('grade').touched)">
+          <span *ngIf="manageAcademicsForm.controls['grade'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['grade'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 mb-12">
+        <label for="inputActivities">Activities</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('activities').invalid && (manageAcademicsForm.get('activities').dirty || manageAcademicsForm.get('activities').touched) && manageAcademicsForm.controls['activities'].errors ? 'is-invalid' : ''"
+               id="inputActivities" placeholder="Activities" formControlName="activities">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('activities').invalid && (manageAcademicsForm.get('activities').dirty || manageAcademicsForm.get('activities').touched)">
+          <span *ngIf="manageAcademicsForm.controls['activities'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['activities'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-12 mb-12">
+        <label for="inputDescription">Description</label>
+        <input type="text" class="form-control" [ngClass]="manageAcademicsForm.get('description').invalid && (manageAcademicsForm.get('description').dirty || manageAcademicsForm.get('description').touched) && manageAcademicsForm.controls['description'].errors ? 'is-invalid' : ''"
+               id="inputdescription" placeholder="Description" formControlName="description">
+        <div class="invalid-feedback" *ngIf="manageAcademicsForm.get('description').invalid && (manageAcademicsForm.get('description').dirty || manageAcademicsForm.get('description').touched)">
+          <span *ngIf="manageAcademicsForm.controls['description'].hasError('required')">This field is required</span>
+          <span *ngIf="manageAcademicsForm.controls['description'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="row margin-top-10">
+      <div class="col-12">
+        <re-captcha formControlName="formRecaptcha"></re-captcha>
+      </div>
+    </div>
+    <div class="margin-top-20">
+      <button type="button" id="cancel-save" class="btn btn-secondary margin-right-10" (click)="previousState()">
+        <i class="fa fa-ban"></i><span>Cancel</span>
+      </button>
+      <button type="submit" id="save-entity" [disabled]="manageAcademicsForm.invalid || isSaving" class="btn btn-primary">
+        <i class="fa fa-save"></i><span>Save</span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,9 @@
+<div>
+  <label for="typeahead-basic">Search for a {{type}}:</label>
+  <input id="typeahead-basic" type="text" class="form-control"
+   [(ngModel)]="model" [ngbTypeahead]="search"    [inputFormatter]="formatter"
+   [resultFormatter]="formatter"
+   [editable]='false'
+   (ngModelChange)="value.emit($event)"/>
+
+</div>

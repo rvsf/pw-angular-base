@@ -1,0 +1,52 @@
+<div class="row justify-content-center panel-container">
+  <div class="col-8">
+    <div *ngIf="academic">
+      <h2><span>Academic</span> {{ academic.id }}</h2>
+      <hr>
+      <dl class="row-md entity-details">
+        <dt><span >ID</span></dt>
+        <dd>
+          <span>{{ academic.id }}</span>
+        </dd>
+        <dt><span >Activities</span></dt>
+        <dd>
+          <span>{{ academic.activities }}</span>
+        </dd>
+        <dt><span >Description</span></dt>
+        <dd>
+          <span>{{ academic.description }}</span>
+        </dd>
+        <dt><span >Educational Institution</span></dt>
+        <dd>
+          <span>{{ academic.educationalInstitution }}</span>
+        </dd>
+        <dt><span>Start Date</span></dt>
+        <dd>
+          <span>{{ academic.startDate }}</span>
+        </dd>
+        <dt><span>End Date</span></dt>
+        <dd>
+          <span>{{ academic.endDate }}</span>
+        </dd>
+        <dt><span>Field Of Study</span></dt>
+        <dd>
+          <span>{{ academic.fieldOfStudy }}</span>
+        </dd>
+        <dt><span>Formation</span></dt>
+        <dd>
+          <span>{{ academic.formation }}</span>
+        </dd>
+        <dt><span>Grade</span></dt>
+        <dd>
+          <span>{{ academic.grade }}</span>
+        </dd>
+      </dl>
+
+
+      <button type="submit" (click)="previousState()" class="btn btn-info margin-right-10">
+        <i class="fa fa-arrow-left"></i><span>Back</span>
+      </button>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="panel-container">
+  <form [formGroup]="manageThemesForm" (ngSubmit)="saveTheme()">
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputTitle">title</label>
+        <input type="text" class="form-control" [ngClass]="manageThemesForm.get('title').invalid && (manageThemesForm.get('title').dirty || manageThemesForm.get('title').touched) && manageThemesForm.controls['title'].errors ? 'is-invalid' : ''"
+               id="inputTitle" placeholder="Title" formControlName="title">
+        <div class="invalid-feedback" *ngIf="manageThemesForm.get('title').invalid && (manageThemesForm.get('title').dirty || manageThemesForm.get('title').touched)">
+          <span *ngIf="manageThemesForm.controls['title'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputDescription">Description</label>
+        <input type="text" class="form-control" [ngClass]="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched) && manageThemesForm.controls['description'].errors ? 'is-invalid' : ''"
+               id="inputDescription" placeholder="Description" formControlName="description">
+        <div class="invalid-feedback" *ngIf="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched)">
+          <span *ngIf="manageThemesForm.controls['description'].hasError('required')">This field is required</span>
+          <span *ngIf="manageThemesForm.controls['description'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputMaxHours">Number of hours</label>
+        <input type="text" class="form-control" [ngClass]="manageThemesForm.get('maxHours').invalid && (manageThemesForm.get('maxHours').dirty || manageThemesForm.get('maxHours').touched) && manageThemesForm.controls['maxHours'].errors ? 'is-invalid' : ''"
+               id="inputMaxHours" placeholder="Max Hours" formControlName="maxHours">
+        <div class="invalid-feedback" *ngIf="manageThemesForm.get('maxHours').invalid && (manageThemesForm.get('maxHours').dirty || manageThemesForm.get('maxHours').touched)">
+          <span *ngIf="manageThemesForm.controls['maxHours'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputPractice">Practice</label>
+        <input type="practice" class="form-control" [ngClass]="manageThemesForm.get('practice').invalid && (manageThemesForm.get('practice').dirty || manageThemesForm.get('practice').touched) && manageThemesForm.controls['practice'].errors ? 'is-invalid' : ''"
+               id="inputPractice" placeholder="Practice" formControlName="practice">
+        <div class="invalid-feedback" *ngIf="manageThemesForm.get('practice').invalid && (manageThemesForm.get('practice').dirty || manageThemesForm.get('practice').touched)">
+          <span *ngIf="manageThemesForm.controls['practice'].hasError('required')">This field is required</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+        <app-type-head [type]="'Course'" [list]='list' (value)='patchValue($event)'></app-type-head>
+
+    </div>
+    <hr>
+    <div class="row margin-top-10">
+      <div class="col-12">
+        <re-captcha formControlName="formRecaptcha"></re-captcha>
+      </div>
+    </div>
+    <div class="margin-top-20">
+      <button type="button" id="cancel-save" class="btn btn-secondary margin-right-10" (click)="previousState()">
+        <i class="fa fa-ban"></i><span>Cancel</span>
+      </button>
+      <button type="submit" id="save-entity" [disabled]="manageThemesForm.invalid || isSaving" class="btn btn-primary">
+        <i class="fa fa-save"></i><span>Save</span>
+      </button>
+    </div>
+  </form>
+</div>

@@ -6,5 +6,50 @@
       <i class="fa fa-plus"></i>
       <span>Create a Certifications</span>
     </button>
+    <div class="alert alert-warning" id="no-result" *ngIf="certifications?.length === 0">
+      <span>No certifications found</span>
+    </div>
+    <div class="table-responsive" id="projectsTable" *ngIf="certifications?.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col" ><span>ID</span></th>
+            <th scope="col" ><span>Code</span></th>
+            <th scope="col" ><span>Name</span></th>
+            <th scope="col" ><span>Url</span></th>
+            <th scope="col" ><span>Expire Date</span></th>
+            <th scope="col" ><span>Expires</span></th>
+            <th scope="col" ><span>Issuing Date</span></th>
+            <th scope="col" ><span>Issuing Org</span></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let c of certifications ;trackBy: trackId">
+            <td><a [routerLink]="[c.id, 'view']">{{ c.id }}</a></td>
+            <td>{{ c.certCode }}</td>
+            <td>{{ c.certName }}</td>
+            <td>{{ c.certUrl }}</td>
+            <td>{{ c.expireDate }}</td>
+            <td>{{ c.expires }}</td>
+            <td>{{ c.issuingDate }}</td>
+            <td>{{ c.issuingOrg }}</td>
+            <td class="text-right">
+              <div class="btn-group">
+                <button type="submit" [routerLink]="[c.id, 'view']" class="btn btn-info btn-sm">
+                  <i class="fa fa-eye"></i>
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+                <button type="submit" (click)="delete(c)" class="btn btn-danger btn-sm">
+                  <i class="fa fa-times"></i>
+                  <span class="d-none d-md-inline">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
   </h2>
 </div>

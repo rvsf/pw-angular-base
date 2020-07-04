@@ -39,7 +39,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="educationNavbarDropdown">
           <a class="dropdown-item" [routerLink]="['/education/manageacademicstudies']">Manage Academic Studies</a>
-          <a class="dropdown-item" [routerLink]="['/education/maangecertifications']">Manage Certifications</a>
+          <a class="dropdown-item" [routerLink]="['/education/managecertifications']">Manage Certifications</a>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -48,7 +48,9 @@
           <span>University</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="universityNavbarDropdown">
-
+          <a class="dropdown-item" [routerLink]="['/university/managecourses']">Manage Courses</a>
+          <a class="dropdown-item" [routerLink]="['/university/manageteachers']">Manage Teachers</a>
+          <a class="dropdown-item" [routerLink]="['/managethemes']">Manage Themes</a>
         </div>
       </li>
       <li class="nav-item">

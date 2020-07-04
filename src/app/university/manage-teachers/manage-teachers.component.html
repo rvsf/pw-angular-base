@@ -1,0 +1,64 @@
+<div class="panel-container">
+  <h2>
+    <span>Manage Teachers</span>
+
+    <button id="create-entity" class="btn btn-primary float-right" [routerLink]="['new']">
+      <i class="fa fa-plus"></i>
+      <span>Create a Teacher</span>
+    </button>
+  </h2>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="teachers?.length === 0">
+    <span>No teachers found</span>
+  </div>
+
+  <div class="table-responsive" id="teachersTable" *ngIf="teachers?.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col" ><span>ID</span></th>
+          <th scope="col" ><span>Birthday Date</span></th>
+          <th scope="col" ><span>Biography</span></th>
+          <th scope="col" ><span>Email</span></th>
+          <th scope="col" ><span>Formation Year</span></th>
+          <th scope="col" ><span>Gender</span></th>
+          <th scope="col" ><span>Name</span></th>
+          <th scope="col" ><span>Resume</span></th>
+          <th scope="col" ><span>Year Experience</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teacher of teachers ;trackBy: trackId">
+          <td><a [routerLink]="[teacher.id, 'view']">{{ teacher.id }}</a></td>
+          <td>{{ teacher.bday }}</td>
+          <td>{{ teacher.bio }}</td>
+          <td>{{ teacher.email }}</td>
+          <td>{{ teacher.formationYear }}</td>
+          <td>{{ teacher.gender }}</td>
+          <td>{{ teacher.name }}</td>
+          <td>{{ teacher.resume }}</td>
+          <td>{{ teacher.workingYear }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="[teacher.id, 'view']" class="btn btn-info btn-sm">
+                <i class="fa fa-eye"></i>
+                <span class="d-none d-md-inline">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="[teacher.id, 'edit']" class="btn btn-primary btn-sm">
+                <i class="fa fa-pencil"></i>
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(teacher)" class="btn btn-danger btn-sm">
+                <i class="fa fa-times"></i>
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

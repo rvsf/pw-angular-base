@@ -129,6 +129,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "my-linkedin"
+    }
+  },
+  "defaultProject": "my-linkedin",
+  "cli": {
+    "analytics": "8085133d-6359-41b4-a0fe-4e0ab65dfc98"
+  }
 }

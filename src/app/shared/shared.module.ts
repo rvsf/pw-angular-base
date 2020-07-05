@@ -25,7 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   providers: [
     {
       provide: RECAPTCHA_SETTINGS,
-      useValue: { siteKey: '6LdF5f4UAAAAAI3K-qdcszcg5ZSEAi5JvK9RF1yk' } as RecaptchaSettings,
+      useValue: { siteKey: '6Lcqo60ZAAAAAHHUrGjmdqG2yVWZHOTwwDd3-2lA' } as RecaptchaSettings,
     },
   ],
   entryComponents: [ConfirmDialogueComponent]

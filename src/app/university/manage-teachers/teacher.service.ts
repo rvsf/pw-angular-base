@@ -12,7 +12,7 @@ import * as firebase from 'firebase';
 })
 export class TeacherService {
 
-  private static CERTIFICATION_KEY = 'teacher';
+  private static TEACHER_KEY = 'teacher';
 
   private unsubscribe: Subject<void> = new Subject<void>();
 
@@ -23,27 +23,42 @@ export class TeacherService {
     return this.angularAuth.user
       .pipe(takeUntil(this.unsubscribe),
         switchMap(user => {
-          return this.af.collection<ITeacher>(TeacherService.CERTIFICATION_KEY).valueChanges();
+          return this.af.collection<ITeacher>(TeacherService.TEACHER_KEY).valueChanges();
         }));
   }
 
   public getById(teacherId: string): Observable<ITeacher> {
-    return this.af.collection<ITeacher>(TeacherService.CERTIFICATION_KEY).doc(teacherId).valueChanges();
+    return this.af.collection<ITeacher>(TeacherService.TEACHER_KEY).doc(teacherId).valueChanges();
   }
 
-  public async create(teacher: ITeacher): Promise<void> {
+  public async create(teacher: ITeacher): Promise<string> {
     const currentUser = firebase.auth().currentUser;
     teacher.id = this.af.createId();
-    return await this.af.collection(TeacherService.CERTIFICATION_KEY).doc(teacher.id).set(teacher);
+    console.log(teacher)
+    const x=  await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).set(teacher);
+    await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).update({timestamp: firebase.firestore.FieldValue.serverTimestamp()});
+    return teacher.id;
+
   }
 
   public async update(teacher: ITeacher): Promise<void> {
     const currentUser = firebase.auth().currentUser;
-    return await this.af.collection(TeacherService.CERTIFICATION_KEY).doc(teacher.id).set(teacher);
+    const x=  await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).set(teacher);
+
+    await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).update({timestamp: firebase.firestore.FieldValue.serverTimestamp()});
+    return x
   }
 
   public async delete(teacherId: string): Promise<void> {
     const currentUser = firebase.auth().currentUser;
-    return await this.af.collection(TeacherService.CERTIFICATION_KEY).doc(teacherId).delete();
+    return await this.af.collection(TeacherService.TEACHER_KEY).doc(teacherId).delete();
+  }
+  public getByTimeStamp(): Promise<any> {
+    return this.af.firestore.collection(TeacherService.TEACHER_KEY).orderBy("timestamp",'desc',).limit(5).get().then(x=>{
+      const courses:ITeacher[]=[]
+      x.docs.forEach((result)=>{
+        courses.push(result.data())
+     })
+    return courses})
   }
 }

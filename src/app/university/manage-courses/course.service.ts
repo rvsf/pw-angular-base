@@ -47,12 +47,13 @@ export class CourseService {
   }
 
   public async update(course: ICourse): Promise<void> {
+    debugger;
     const currentUser = firebase.auth().currentUser;
-    course.themes.forEach(theme=>theme.id?'':theme.id=this.af.createId())
+    if(course.themes &&course.themes.length>0)
+      course.themes.forEach(theme=>theme.id?'':theme.id=this.af.createId())
     const x =await this.af.collection(CourseService.COURSE_KEY).doc(course.id).set(course);
     await this.af.collection(CourseService.COURSE_KEY).doc(course.id).update({timestamp: firebase.firestore.FieldValue.serverTimestamp()});
 
-    debugger;
     return x
 
   }
@@ -61,10 +62,13 @@ export class CourseService {
     const currentUser = firebase.auth().currentUser;
     return await this.af.collection(CourseService.COURSE_KEY).doc(courseId).delete();
   }
-  public getByTimeStamp(ThemeId: string): Promise<any> {
-    return this.af.firestore.collection(CourseService.COURSE_KEY).orderBy("timestamp",'desc',).limit(5).get().then(querySnapshot=>{
-       return querySnapshot.docChanges();;
-    })
+  public getByTimeStamp(): Promise<any> {
+    return this.af.firestore.collection(CourseService.COURSE_KEY).orderBy("timestamp",'desc',).limit(5).get().then(x=>{
+      const courses:ICourse[]=[]
+      x.docs.forEach((result)=>{
+        courses.push(result.data())
+     })
+      return courses})
 
  }
 }

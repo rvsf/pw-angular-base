@@ -16,12 +16,14 @@ export class TypeHeadComponent implements OnInit {
   @Input() list: any[]
   @Input() currentValue:any
   @Output()value: EventEmitter<String> = new EventEmitter<string>();
-  public model: any = this.currentValue;
+  public model: any ;
 
   formatter = (state: any) => state.name||state.title;
   ngOnInit(): void {
+    debugger;
     console.log(this.currentValue)
-    this.model= this.currentValue
+    if(this.currentValue)
+      this.model= this.currentValue
   }
   search = (text$: Observable<string>) => text$.pipe(
     debounceTime(200),

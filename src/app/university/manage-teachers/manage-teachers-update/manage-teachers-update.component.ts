@@ -62,7 +62,7 @@ export class ManageTeachersUpdateComponent implements OnInit {
       id: new FormControl(''),
       bday: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       bio: new FormControl('', [Validators.required, Validators.maxLength(50)]),
-      email: new FormControl('', [Validators.required, Validators.maxLength(50)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
       formationYear: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       gender: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       name: new FormControl('', [Validators.required, Validators.maxLength(50)]),

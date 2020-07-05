@@ -1,7 +1,7 @@
 <div class="panel-container">
   <form [formGroup]="manageCertificatesForm" (ngSubmit)="saveCertification()">
     <div class="form-row">
-      <div class="form-group col-md-6 mb-6">
+      <div class="form-group col-md-4 mb-4">
         <label for="inputCode">Code</label>
         <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('certCode').invalid && (manageCertificatesForm.get('certCode').dirty || manageCertificatesForm.get('certCode').touched) && manageCertificatesForm.controls['certCode'].errors ? 'is-invalid' : ''"
                id="inputCode" placeholder="Code" formControlName="certCode">
@@ -10,7 +10,7 @@
           <span *ngIf="manageCertificatesForm.controls['certCode'].hasError('maxlength')">Max length of this field is 50 characters</span>
         </div>
       </div>
-      <div class="form-group col-md-6 mb-6">
+      <div class="form-group col-md-4 mb-4">
         <label for="inputName">Name</label>
         <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('certName').invalid && (manageCertificatesForm.get('certName').dirty || manageCertificatesForm.get('certName').touched) && manageCertificatesForm.controls['certName'].errors ? 'is-invalid' : ''"
                id="inputName" placeholder="Name" formControlName="certName">
@@ -19,9 +19,7 @@
           <span *ngIf="manageCertificatesForm.controls['certName'].hasError('maxlength')">Max length of this field is 50 characters</span>
         </div>
       </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12 mb-12">
+      <div class="form-group col-md-4 mb-4">
         <label for="inputUrl">URL</label>
         <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('certUrl').invalid && (manageCertificatesForm.get('certUrl').dirty || manageCertificatesForm.get('certUrl').touched) && manageCertificatesForm.controls['certUrl'].errors ? 'is-invalid' : ''"
                id="inputUrl" placeholder="Url" formControlName="certUrl">
@@ -34,13 +32,26 @@
     <div class="form-row">
       <div class="form-group col-md-6 mb-6">
         <label for="inputExpireDate">Expire Date</label>
-        <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('expireDate').invalid && (manageCertificatesForm.get('expireDate').dirty || manageCertificatesForm.get('expireDate').touched) && manageCertificatesForm.controls['expireDate'].errors ? 'is-invalid' : ''"
+        <input type="date" class="form-control" [ngClass]="manageCertificatesForm.get('expireDate').invalid && (manageCertificatesForm.get('expireDate').dirty || manageCertificatesForm.get('expireDate').touched) && manageCertificatesForm.controls['expireDate'].errors ? 'is-invalid' : ''"
                id="inputExpireDate" placeholder="Expire Date" formControlName="expireDate">
         <div class="invalid-feedback" *ngIf="manageCertificatesForm.get('expireDate').invalid && (manageCertificatesForm.get('expireDate').dirty || manageCertificatesForm.get('expireDate').touched)">
           <span *ngIf="manageCertificatesForm.controls['expireDate'].hasError('required')">This field is required</span>
           <span *ngIf="manageCertificatesForm.controls['expireDate'].hasError('maxlength')">Max length of this field is 50 characters</span>
         </div>
       </div>
+      <div class="form-group col-md-6 mb-6">
+        <label for="inputIssuingDate">Issuing Date</label>
+        <input type="date" class="form-control" [ngClass]="manageCertificatesForm.get('issuingDate').invalid && (manageCertificatesForm.get('issuingDate').dirty || manageCertificatesForm.get('issuingDate').touched) && manageCertificatesForm.controls['issuingDate'].errors ? 'is-invalid' : ''"
+               id="inputIssuingDate" placeholder="Issuing Date" formControlName="issuingDate">
+        <div class="invalid-feedback" *ngIf="manageCertificatesForm.get('issuingDate').invalid && (manageCertificatesForm.get('issuingDate').dirty || manageCertificatesForm.get('issuingDate').touched)">
+          <span *ngIf="manageCertificatesForm.controls['issuingDate'].hasError('required')">This field is required</span>
+          <span *ngIf="manageCertificatesForm.controls['issuingDate'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="form-row">
       <div class="form-group col-md-6 mb-6">
         <label for="inputExpires">Expires</label>
         <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('expires').invalid && (manageCertificatesForm.get('expires').dirty || manageCertificatesForm.get('expires').touched) && manageCertificatesForm.controls['expires'].errors ? 'is-invalid' : ''"
@@ -51,21 +62,7 @@
         </div>
       </div>
 
-
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12 mb-12">
-        <label for="inputIssuingDate">Issuing Date</label>
-        <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('issuingDate').invalid && (manageCertificatesForm.get('issuingDate').dirty || manageCertificatesForm.get('issuingDate').touched) && manageCertificatesForm.controls['issuingDate'].errors ? 'is-invalid' : ''"
-               id="inputIssuingDate" placeholder="Issuing Date" formControlName="issuingDate">
-        <div class="invalid-feedback" *ngIf="manageCertificatesForm.get('issuingDate').invalid && (manageCertificatesForm.get('issuingDate').dirty || manageCertificatesForm.get('issuingDate').touched)">
-          <span *ngIf="manageCertificatesForm.controls['issuingDate'].hasError('required')">This field is required</span>
-          <span *ngIf="manageCertificatesForm.controls['issuingDate'].hasError('maxlength')">Max length of this field is 50 characters</span>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-12 mb-12">
+      <div class="form-group col-md-6 mb-6">
         <label for="inputIssuingOrganization">Issuing Organization</label>
         <input type="text" class="form-control" [ngClass]="manageCertificatesForm.get('issuingOrg').invalid && (manageCertificatesForm.get('issuingOrg').dirty || manageCertificatesForm.get('issuingOrg').touched) && manageCertificatesForm.controls['issuingOrg'].errors ? 'is-invalid' : ''"
                id="inputIssuingOrganization" placeholder="Issuing Organization" formControlName="issuingOrg">
@@ -75,6 +72,7 @@
         </div>
       </div>
     </div>
+
     <hr>
     <div class="row margin-top-10">
       <div class="col-12">

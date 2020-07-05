@@ -17,6 +17,10 @@ const appRoutes: Routes = [
     path: 'university',
     loadChildren: './university/university.module#UniversityModule'
   },
+  {
+    path: 'contacts',
+    loadChildren: './university/university.module#UniversityModule'
+  },
   ...LAYOUT_ROUTES
 ];
 

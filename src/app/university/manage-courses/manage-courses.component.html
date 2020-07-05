@@ -21,7 +21,7 @@
           <th scope="col" ><span>Description</span></th>
           <th scope="col" ><span>ECT</span></th>
           <th scope="col" ><span>Hours</span></th>
-          <th scope="col" ><span>Teacher</span></th>
+          <th class="text-center" scope="col" ><span>Teacher</span></th>
           <th class="text-center" scope="col" ><span>Themes</span></th>
 
           <th class="text-center" scope="col" ><span>Practice</span></th>
@@ -35,7 +35,9 @@
           <td>{{ course.description }}</td>
           <td>{{ course.ect }}</td>
           <td>{{ course.maxHours }}</td>
-          <td>{{ course.teacher.name }}</td>
+          <td class="text-center">
+            <i class="fa" [ngClass]="(course.teacher.name) ? 'fa-check' : 'fa-times'"></i>
+          </td>
           <td class="text-center">
             <i class="fa" [ngClass]="(course.themes.length>0) ? 'fa-check' : 'fa-times'"></i>
           </td>

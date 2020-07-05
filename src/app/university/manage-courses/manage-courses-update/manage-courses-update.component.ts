@@ -21,6 +21,7 @@ export class ManageCoursesUpdateComponent implements OnInit {
   list$:Observable<any[]>
   list:ITeacher[]=[]
   teacher:ITeacher;
+  teacher$:Observable<ITeacher>
   createTeacher:boolean=false
   manageTeachersForm: FormGroup;
   course:Course ;
@@ -42,7 +43,13 @@ export class ManageCoursesUpdateComponent implements OnInit {
      this.activatedRoute.data.subscribe(({ project }) => {
       this.updateForm(project);
       this.course=project
-      this.teacher= this.course.teacher
+      if(this.course.teacher &&this.course.teacher!=='N/A'){
+        this.teacher$=this.teacherService.getById(this.course.teacher.id)
+        this.teacher$.subscribe(x=>{
+          this.teacher=x;
+        })
+      }
+
     });
     this.list$=this.teacherService.get()
     this.list$.subscribe((teachers:ITeacher[])=>{
@@ -54,13 +61,11 @@ export class ManageCoursesUpdateComponent implements OnInit {
 
   saveCourse(): void {
     this.isSaving = true;
-    this.findTeacher(this.teacher.name)
-    if(this.teacher && this.teacher.id)
+    if(this.teacher && this.teacher.name){
+      this.findTeacher(this.teacher.name)
       this.manageCoursesForm.get(['teacher']).patchValue(this.teacher)
-    else{
-      this.toastr.error('An error occurred while adding a new teacher', 'Error');
-
     }
+
     if(!this.manageCoursesForm.get(['practice']).value)
       this.manageCoursesForm.get(['practice']).patchValue(false)
 
@@ -84,6 +89,7 @@ export class ManageCoursesUpdateComponent implements OnInit {
           this.router.navigate(['/managecourses']);
         },
         err => {
+          console.log(err)
           this.isSaving = false;
           this.toastr.error('An error occurred while saving a new course', 'Error');
         });
@@ -98,6 +104,7 @@ export class ManageCoursesUpdateComponent implements OnInit {
 
   patchValue(value){
     this.teacher=value;
+    this.course.teacher=value
     this.manageCoursesForm.get(['teacher']).patchValue(value.name)
   }
   previousState(): void {
@@ -219,15 +226,39 @@ export class ManageCoursesUpdateComponent implements OnInit {
 
 
   saveTeacher(){
-    this.teacherService.create(this.manageTeachersForm.getRawValue()).then(data => {
-      this.isSaving = false;
-      this.toastr.success('New Teacher successfully created,select it to the course, by writting his name', 'Success');
-      this.createTeacher=false
-      this.patchValue(this.teacher)
-    },
-    err => {
-      this.isSaving = false;
-      this.toastr.error('An error occurred while saving a new teacher', 'Error');
-    });
-  }
+    if (!this.manageTeachersForm.get(['id']).value)
+      this.teacherService.create(this.manageTeachersForm.getRawValue()).then(data => {
+        this.manageTeachersForm.get(['id']).patchValue(data)
+        this.patchValue(this.manageTeachersForm.getRawValue())
+        this.courseService.update(this.course);
+
+        this.toastr.success('New Teacher successfully created,select it to the course, by writting his name', 'Success');
+        this.ngOnInit()
+        this.isSaving = false;
+        this.createTeacher=false
+
+        debugger;
+      },
+      err => {
+        this.isSaving = false;
+        this.toastr.error('An error occurred while saving a new teacher', 'Error');
+      });
+    else
+      this.teacherService.update(this.manageTeachersForm.getRawValue()).then(data => {
+        this.patchValue(this.manageTeachersForm.getRawValue())
+        this.courseService.update(this.course);
+        this.toastr.success('Teacher updated  successfully', 'Success');
+        this.ngOnInit()
+        this.isSaving = false;
+        this.createTeacher=false
+
+        debugger;
+      },
+      err => {
+        this.isSaving = false;
+        this.toastr.error('An error occurred while saving a new teacher', 'Error');
+      });
+
+    }
+
 }

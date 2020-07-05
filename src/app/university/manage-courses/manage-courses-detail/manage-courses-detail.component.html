@@ -24,14 +24,21 @@
         <dd>
           <span>{{ course.maxHours }}</span>
         </dd>
-        <dt><span>State</span></dt>
+        <dt><span>Practice</span></dt>
         <dd>
-          <span>{{ course.practice }}</span>
+          <span>{{ course.practice===true?'Yes':'No' }}</span>
         </dd>
         <dt><span>Themes</span></dt>
-        <dd *ngFor="let item of course.themes">
-          <span>{{ item.title+' - '+item.id }}</span>
-        </dd>
+        <div *ngIf="course.themes.length>0; else elseThemes" >
+          <dd *ngFor="let item of course.themes">
+            <span>{{ item.title+' - '+item.id }}</span>
+          </dd>
+        </div>
+        <ng-template #elseThemes>
+          <dd>
+            <span>N/A</span>
+          </dd>
+        </ng-template>
         <dt><span>Teacher</span></dt>
         <dd>
           <div *ngIf="course.teacher.name; else elseTeacher" >

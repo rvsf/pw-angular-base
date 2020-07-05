@@ -14,6 +14,7 @@ import { ManageCoursesDetailComponent } from './manage-courses/manage-courses-de
 import { ManageThemesComponent } from './manage-themes/manage-themes.component';
 import { ManageThemesDetailComponent } from './manage-themes/manage-themes-detail/manage-themes-detail.component';
 import { ManageThemesUpdateComponent } from './manage-themes/manage-themes-update/manage-themes-update.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ManageThemesUpdateComponent } from './manage-themes/manage-themes-updat
   imports: [
     CommonModule,
     SharedModule,
-    UniversityRoutingModule
+    UniversityRoutingModule,
+    NgbModule
   ],
   exports:[
     ManageTeachersUpdateComponent

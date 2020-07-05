@@ -31,8 +31,11 @@ export class ManageThemesComponent implements OnInit {
       this.spinner.hide();
 
       this.Themes = this.mapData(data);
-      if(data)
-      this.create=true;
+      console.log(data)
+      if(data.length>0)
+        this.create=true;
+      console.log(this.create)
+
     }, err => {
       this.spinner.hide();
     });
@@ -58,7 +61,10 @@ export class ManageThemesComponent implements OnInit {
     const modalRef = this.modalService.open(ConfirmDialogueComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.id = Theme.id;
     modalRef.componentInstance.type = 'Theme';
+    debugger;
+
     modalRef.result.then((id)=>{
+
       if(id){
           let course : Course
           let flagToRemove:boolean=false;
@@ -74,17 +80,17 @@ export class ManageThemesComponent implements OnInit {
                   flagToRemove=true
                 }
               })
-              if(flagToRemove&&idCourse){
+              if(flagToRemove&&!indexCourse){//just hold the first
                 indexCourse=index;
+
 
               }
           });
-          if(indexCourse && indexTheme && flagToRemove ){
-            this.listCourses[indexCourse]
+          if(flagToRemove ){
             course=this.listCourses[indexCourse]
-            course.themes.slice(indexTheme,1)
+            course.themes.splice(indexTheme,1)
           }
-
+          console.log(course)
         this.courseService.update(course).then(() => {
           this.toastr.success('Certification successfully deleted', 'Suceess');
         },

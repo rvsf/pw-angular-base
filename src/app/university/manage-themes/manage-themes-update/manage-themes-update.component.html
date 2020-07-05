@@ -10,37 +10,36 @@
         </div>
       </div>
       <div class="form-group col-md-6 mb-6">
-        <label for="inputDescription">Description</label>
-        <input type="text" class="form-control" [ngClass]="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched) && manageThemesForm.controls['description'].errors ? 'is-invalid' : ''"
-               id="inputDescription" placeholder="Description" formControlName="description">
-        <div class="invalid-feedback" *ngIf="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched)">
-          <span *ngIf="manageThemesForm.controls['description'].hasError('required')">This field is required</span>
-          <span *ngIf="manageThemesForm.controls['description'].hasError('maxlength')">Max length of this field is 50 characters</span>
-        </div>
-      </div>
-    </div>
-    <div class="form-row">
-      <div class="form-group col-md-6 mb-6">
         <label for="inputMaxHours">Number of hours</label>
-        <input type="text" class="form-control" [ngClass]="manageThemesForm.get('maxHours').invalid && (manageThemesForm.get('maxHours').dirty || manageThemesForm.get('maxHours').touched) && manageThemesForm.controls['maxHours'].errors ? 'is-invalid' : ''"
+        <input type="number" class="form-control" [ngClass]="manageThemesForm.get('maxHours').invalid && (manageThemesForm.get('maxHours').dirty || manageThemesForm.get('maxHours').touched) && manageThemesForm.controls['maxHours'].errors ? 'is-invalid' : ''"
                id="inputMaxHours" placeholder="Max Hours" formControlName="maxHours">
         <div class="invalid-feedback" *ngIf="manageThemesForm.get('maxHours').invalid && (manageThemesForm.get('maxHours').dirty || manageThemesForm.get('maxHours').touched)">
           <span *ngIf="manageThemesForm.controls['maxHours'].hasError('required')">This field is required</span>
         </div>
       </div>
-      <div class="form-group col-md-6 mb-6">
-        <label for="inputPractice">Practice</label>
-        <input type="practice" class="form-control" [ngClass]="manageThemesForm.get('practice').invalid && (manageThemesForm.get('practice').dirty || manageThemesForm.get('practice').touched) && manageThemesForm.controls['practice'].errors ? 'is-invalid' : ''"
-               id="inputPractice" placeholder="Practice" formControlName="practice">
-        <div class="invalid-feedback" *ngIf="manageThemesForm.get('practice').invalid && (manageThemesForm.get('practice').dirty || manageThemesForm.get('practice').touched)">
-          <span *ngIf="manageThemesForm.controls['practice'].hasError('required')">This field is required</span>
-        </div>
-      </div>
     </div>
     <div class="form-row">
-        <app-type-head [type]="'Course'" [list]='list' (value)='patchValue($event)'></app-type-head>
+      <div class="form-group col-md-6 mb-6 mr-4">
+        <label for="inputDescription">Description</label>
+        <textarea  type="text" class="form-control" [ngClass]="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched) && manageThemesForm.controls['description'].errors ? 'is-invalid' : ''"
+               id="inputDescription" placeholder="Description" formControlName="description"></textarea>
+        <div class="invalid-feedback" *ngIf="manageThemesForm.get('description').invalid && (manageThemesForm.get('description').dirty || manageThemesForm.get('description').touched)">
+          <span *ngIf="manageThemesForm.controls['description'].hasError('required')">This field is required</span>
+          <span *ngIf="manageThemesForm.controls['description'].hasError('maxlength')">Max length of this field is 50 characters</span>
+        </div>
+      </div>
+      <div class="form-group ml-4 mt-4">
+        <input class="form-check-input" type="checkbox" id="practice" formControlName="practice" checked="true">
+        <label class="form-check-label" for="practice">
+          Practice
+        </label>
+      </div>
+
 
     </div>
+      <app-type-head [type]="'Course'" [list]='list' (value)='patchValue($event)'></app-type-head>
+
+
     <hr>
     <div class="row margin-top-10">
       <div class="col-12">

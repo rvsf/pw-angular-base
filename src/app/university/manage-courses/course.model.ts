@@ -5,11 +5,10 @@ export interface ICourse {
   id?: string;
   title?: string;
   description?: string;
-  ect?: string;
-  maxHours?: string;
+  ect?: number;
+  maxHours?: number;
   practice?: boolean;
   teacher?:ITeacher
-
   themes?:Theme[]
 
 }
@@ -19,8 +18,8 @@ export class Course implements ICourse {
     public id?: string,
     public title?: string,
     public description?: string,
-    public ect?: string,
-    public maxHours?: string,
+    public ect?: number,
+    public maxHours?: number,
     public practice?: boolean,
     public teacher?:Teacher,
     public teacherID?:string,

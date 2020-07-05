@@ -3,8 +3,8 @@ export interface ICertification {
   certName?: string;
   issuingOrg?: string;
   expires?: boolean;
-  issuingDate?: string;
-  expireDate?: string;
+  issuingDate?: Date;
+  expireDate?: Date;
   certCode?: string;
   certUrl?: string
 }
@@ -15,8 +15,8 @@ export class Certification implements ICertification {
     public certName?: string,
     public issuingOrg?: string,
     public expires?: boolean,
-    public issuingDate?: string,
-    public expireDate?: string,
+    public issuingDate?: Date,
+    public expireDate?: Date,
     public certCode?: string,
     public certUrl?: string
   ) {}

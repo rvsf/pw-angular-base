@@ -30,7 +30,9 @@
       <button type="submit" (click)="previousState()" class="btn btn-info margin-right-10">
         <i class="fa fa-arrow-left"></i><span>Back</span>
       </button>
-
+      <button type="button" [routerLink]="['/managethemes', Theme.id, 'edit']" class="btn btn-primary">
+        <i class="fa fa-pencil"></i><span>Edit</span>
+      </button>
     </div>
   </div>
 </div>

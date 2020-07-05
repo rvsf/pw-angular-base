@@ -1,9 +1,10 @@
 <div>
-  <label for="typeahead-basic">Search for a {{type}}:</label>
+  <label for="typeahead-basic">Select a {{type}}:</label>
   <input id="typeahead-basic" type="text" class="form-control"
    [(ngModel)]="model" [ngbTypeahead]="search"    [inputFormatter]="formatter"
    [resultFormatter]="formatter"
    [editable]='false'
-   (ngModelChange)="value.emit($event)"/>
+   (ngModelChange)="value.emit($event)"
+   ngbTooltip="Select one from the list to register it with the course.NOT REQUIRED FOR SUBMISSION"/>
 
 </div>

@@ -28,7 +28,6 @@ export class SearchComponent implements OnInit {
       this.activatedRoute.data.subscribe(({ courses }) => {
         this.spinner.hide();
 
-        debugger;
         this.courses = courses;
       });
     }
@@ -42,7 +41,6 @@ export class SearchComponent implements OnInit {
       }
       this.CourseService.getByKeyword(this.searchForm.controls.key.value,this.searchForm.controls.value.value).then(x => {
         this.spinner.hide();
-        debugger;
         this.courses = x;
       });
 

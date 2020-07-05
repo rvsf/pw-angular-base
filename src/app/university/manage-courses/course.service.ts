@@ -48,7 +48,6 @@ export class CourseService {
   }
 
   public async update(course: ICourse): Promise<void> {
-    debugger;
     const currentUser = firebase.auth().currentUser;
     if(course.themes &&course.themes.length>0)
       course.themes.forEach(theme=>theme.id?'':theme.id=this.af.createId())
@@ -83,7 +82,6 @@ export class CourseService {
     }
    }else{
      if(key==='Practice'){
-      debugger;
       value=value==='true'?true:false;
      }
     key=key.toLocaleLowerCase()
@@ -93,7 +91,6 @@ export class CourseService {
       x.docs.forEach((result)=>{
         courses.push(result.data())
     })
-    console.log(courses)
       return courses})
     }
 

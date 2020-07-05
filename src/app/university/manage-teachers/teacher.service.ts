@@ -34,7 +34,6 @@ export class TeacherService {
   public async create(teacher: ITeacher): Promise<string> {
     const currentUser = firebase.auth().currentUser;
     teacher.id = this.af.createId();
-    console.log(teacher)
     const x=  await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).set(teacher);
     await this.af.collection(TeacherService.TEACHER_KEY).doc(teacher.id).update({timestamp: firebase.firestore.FieldValue.serverTimestamp()});
     return teacher.id;

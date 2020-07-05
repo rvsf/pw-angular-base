@@ -59,7 +59,6 @@ export class ManageThemesComponent implements OnInit {
     const modalRef = this.modalService.open(ConfirmDialogueComponent, { size: 'lg', backdrop: 'static' });
     modalRef.componentInstance.id = Theme.id;
     modalRef.componentInstance.type = 'Theme';
-    debugger;
 
     modalRef.result.then((id)=>{
 
@@ -88,7 +87,6 @@ export class ManageThemesComponent implements OnInit {
             course=this.listCourses[indexCourse]
             course.themes.splice(indexTheme,1)
           }
-          console.log(course)
         this.courseService.update(course).then(() => {
           this.toastr.success('Certification successfully deleted', 'Suceess');
         },

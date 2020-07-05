@@ -36,7 +36,6 @@ export class ManageAcademicStudiesComponent implements OnInit {
 
   delete(academic: IAcademic): void {
     const modalRef = this.modalService.open(ConfirmDialogueComponent, { size: 'lg', backdrop: 'static' });
-    console.log(academic)
     modalRef.componentInstance.id = academic.id;
     modalRef.componentInstance.type = 'Academic';
     modalRef.result.then((id)=>{

@@ -20,8 +20,6 @@ export class TypeHeadComponent implements OnInit {
 
   formatter = (state: any) => state.name||state.title;
   ngOnInit(): void {
-    debugger;
-    console.log(this.currentValue)
     if(this.currentValue)
       this.model= this.currentValue
   }

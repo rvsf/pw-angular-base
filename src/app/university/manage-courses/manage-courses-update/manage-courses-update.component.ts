@@ -73,14 +73,12 @@ export class ManageCoursesUpdateComponent implements OnInit {
 
 
     if (!this.manageCoursesForm.get(['id']).value) {
-      console.log(this.manageCoursesForm.getRawValue())
       this.courseService.create(this.manageCoursesForm.getRawValue()).then(data => {
           this.isSaving = false;
           this.toastr.success('New Course successfully created', 'Success');
           this.router.navigate(['/managecourses']);
         },
         err => {
-          console.log(err)
           this.isSaving = false;
           this.toastr.error('An error occurred while saving a new course', 'Error');
         });
@@ -91,7 +89,6 @@ export class ManageCoursesUpdateComponent implements OnInit {
           this.router.navigate(['/managecourses']);
         },
         err => {
-          console.log(err)
           this.isSaving = false;
           this.toastr.error('An error occurred while saving a new course', 'Error');
         });
@@ -239,7 +236,6 @@ export class ManageCoursesUpdateComponent implements OnInit {
         this.isSaving = false;
         this.createTeacher=false
 
-        debugger;
       },
       err => {
         this.isSaving = false;
@@ -254,7 +250,6 @@ export class ManageCoursesUpdateComponent implements OnInit {
         this.isSaving = false;
         this.createTeacher=false
 
-        debugger;
       },
       err => {
         this.isSaving = false;

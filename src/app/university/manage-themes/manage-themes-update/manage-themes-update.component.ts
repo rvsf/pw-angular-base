@@ -33,8 +33,8 @@ export class ManageThemesUpdateComponent implements OnInit {
       this.list=courses
     })
     this.createForm();
-    this.activatedRoute.data.subscribe(({ project }) => {
-      this.updateForm(project);
+    this.activatedRoute.data.subscribe(({ theme }) => {
+      this.updateForm(theme);
     });
   }
 

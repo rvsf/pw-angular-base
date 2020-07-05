@@ -18,6 +18,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { UniversityModule } from './university/university.module';
+import { ContactModule } from './contact/contact.module';
+import { SearchModule } from './search/search.module';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAGzP9zeMUGgg3q98-v-y5Ji2iZPdlz5jA",
@@ -45,6 +47,8 @@ const firebaseConfig = {
     ProjectModule,
     EducationModule,
     UniversityModule,
+    ContactModule,
+    SearchModule,
 
     ToastrModule.forRoot({
       positionClass: 'toast-top-right',

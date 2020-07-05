@@ -5,8 +5,8 @@
       Latest 5 Teachers Available
     </h2>
     <hr>
-    <div class="table-responsive" id="teachersTable" >
-      <table class="table table-striped" aria-describedby="page-heading">
+    <div class="table-responsive" id="teachersTable" *ngIf="teacherList.length>0">
+      <table class="table table-striped" aria-describedby="page-heading" >
         <thead>
           <tr>
             <th scope="col" ><span>ID</span></th>
@@ -18,7 +18,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let teacher of teacherList ;trackBy: trackIdTeacher">
-            <td><a [routerLink]="[teacher.id, 'view']">{{ teacher.id }}</a></td>
+            <td><a [routerLink]="['/university/manageteachers',teacher.id, 'view']">{{ teacher.id }}</a></td>
             <td>{{ teacher.name }}</td>
             <td>{{ teacher.email }}</td>
             <td>{{ teacher.gender }}</td>
@@ -27,11 +27,14 @@
         </tbody>
       </table>
     </div>
+    <div class="alert alert-warning" id="no-result" *ngIf="teacherList?.length === 0">
+      <span>No Teachers available</span>
+    </div>
     <h2>
       Latest 5 Courses Available
     </h2>
     <hr>
-    <div class="table-responsive" id="coursesTable" >
+    <div class="table-responsive" id="coursesTable" *ngIf="courseList?.length > 0">
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr>
@@ -48,7 +51,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let course of courseList ;trackBy: trackIdCourse">
-            <td><a [routerLink]="[course.id, 'view']">{{ course.id }}</a></td>
+            <td><a [routerLink]="['/university/managecourses',course.id, 'view']">{{ course.id }}</a></td>
             <td>{{ course.title }}</td>
             <td>{{ course.description }}</td>
             <td>{{ course.ect }}</td>
@@ -65,6 +68,9 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="alert alert-warning" id="no-result" *ngIf="courseList?.length === 0">
+      <span>No Courses available</span>
     </div>
   </div>
 

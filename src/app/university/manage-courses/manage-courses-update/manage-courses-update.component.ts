@@ -40,9 +40,9 @@ export class ManageCoursesUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-     this.activatedRoute.data.subscribe(({ project }) => {
-      this.updateForm(project);
-      this.course=project
+     this.activatedRoute.data.subscribe(({ course }) => {
+      this.updateForm(course);
+      this.course=course
       if(this.course.teacher &&this.course.teacher!=='N/A'){
         this.teacher$=this.teacherService.getById(this.course.teacher.id)
         this.teacher$.subscribe(x=>{
@@ -64,6 +64,8 @@ export class ManageCoursesUpdateComponent implements OnInit {
     if(this.teacher && this.teacher.name){
       this.findTeacher(this.teacher.name)
       this.manageCoursesForm.get(['teacher']).patchValue(this.teacher)
+    }else{
+      this.manageCoursesForm.get(['teacher']).patchValue('')
     }
 
     if(!this.manageCoursesForm.get(['practice']).value)

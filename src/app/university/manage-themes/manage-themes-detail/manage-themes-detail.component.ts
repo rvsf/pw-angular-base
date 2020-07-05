@@ -13,8 +13,8 @@ export class ManageThemesDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ project }) => {
-      this.Theme = project;
+    this.activatedRoute.data.subscribe(({ theme }) => {
+      this.Theme = theme;
     });
   }
   previousState(): void {

@@ -13,9 +13,9 @@ export class ManageTeachersDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({project}) => {
+    this.activatedRoute.data.subscribe(({teacher}) => {
 
-      this.teacher = project;
+      this.teacher = teacher;
     });
   }
 

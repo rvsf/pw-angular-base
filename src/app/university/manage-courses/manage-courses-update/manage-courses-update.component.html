@@ -39,7 +39,7 @@
       </div>
     </div>
     <div class="form-row"  *ngIf="list$|async as list">
-      <div class="form-group col-md-6 mb-6" *ngIf="(list.length>0)&& teacher$|async">
+      <div class="form-group col-md-6 mb-6" *ngIf="(list.length>0)">
         <app-type-head [type]="'Teacher'" [list]='list' [currentValue]="teacher" (value)='patchValue($event)'></app-type-head>
       </div>
       <div class="form-group col-md-6 mb-6 mt-2" *ngIf="teacher"  >

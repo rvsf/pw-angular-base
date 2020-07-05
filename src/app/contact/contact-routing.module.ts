@@ -8,12 +8,13 @@ const routes: Routes = [
     path: '',
     children: [
       {
-        path: 'contacts',
+        path: 'view',
         component: ContactComponent,
       }
     ]
   }
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

@@ -1,16 +1,12 @@
 <div class="row justify-content-center panel-container">
   <div class="col-8">
     <div *ngIf="teacher">
-      <h2><span>Teacher</span> {{ teacher.id }}</h2>
+      <h2><span>Teacher</span>: {{ teacher.name }}</h2>
       <hr>
       <dl class="row-md entity-details">
         <dt><span >ID</span></dt>
         <dd>
           <span>{{ teacher.id }}</span>
-        </dd>
-        <dt><span >Name</span></dt>
-        <dd>
-          <span>{{ teacher.name }}</span>
         </dd>
         <dt><span >Birthday Date</span></dt>
         <dd>

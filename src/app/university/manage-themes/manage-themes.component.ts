@@ -31,10 +31,8 @@ export class ManageThemesComponent implements OnInit {
       this.spinner.hide();
 
       this.Themes = this.mapData(data);
-      console.log(data)
       if(data.length>0)
         this.create=true;
-      console.log(this.create)
 
     }, err => {
       this.spinner.hide();

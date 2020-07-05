@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   navBarSearchForm: FormGroup;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
     this.createForm();
@@ -20,5 +21,10 @@ export class NavbarComponent implements OnInit {
     this.navBarSearchForm = new FormGroup({
       searchKey: new FormControl(''),
     });
+  }
+  search(){
+    if(this.navBarSearchForm.controls.searchKey.value)
+    this.router.navigate(['/search',this.navBarSearchForm.controls.searchKey.value,'view']);
+
   }
 }

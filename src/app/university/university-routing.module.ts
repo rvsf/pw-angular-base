@@ -26,75 +26,75 @@ const routes: Routes = [
         path: 'managecourses/:id/view',
         component: ManageCoursesDetailComponent,
         resolve: {
-          project: CourseResolver
+          course: CourseResolver
         }
       },
       {
         path: 'managecourses/new',
         component: ManageCoursesUpdateComponent,
         resolve: {
-          project: CourseResolver
+          course: CourseResolver
         }
       },
       {
         path: 'managecourses/:id/edit',
         component: ManageCoursesUpdateComponent,
         resolve: {
-          project: CourseResolver
+          course: CourseResolver
         }
       },
       {
         path: 'manageteachers',
         component:  ManageTeachersComponent,
         resolve: {
-          project: TeacherResolver
+          teacher: TeacherResolver
         }
       },{
         path: 'manageteachers/:id/view',
         component: ManageTeachersDetailComponent,
         resolve: {
-          project: TeacherResolver
+          teacher: TeacherResolver
         }
       },
       {
         path: 'manageteachers/new',
         component: ManageTeachersUpdateComponent,
         resolve: {
-          project: TeacherResolver
+          teacher: TeacherResolver
         }
       },
       {
         path: 'manageteachers/:id/edit',
         component: ManageTeachersUpdateComponent,
         resolve: {
-          project: TeacherResolver
+          teacher: TeacherResolver
         }
       },
       {
         path: 'managethemes',
         component:  ManageThemesComponent,
         resolve: {
-          project: ThemeResolver
+          theme: ThemeResolver
         }
       },{
         path: 'managethemes/:id/view',
         component: ManageThemesDetailComponent,
         resolve: {
-          project: ThemeResolver
+          theme: ThemeResolver
         }
       },
       {
         path: 'managethemes/new',
         component: ManageThemesUpdateComponent,
         resolve: {
-          project: ThemeResolver
+          theme: ThemeResolver
         }
       },
       {
         path: 'managethemes/:id/edit',
         component: ManageThemesUpdateComponent,
         resolve: {
-          project: ThemeResolver
+          theme: ThemeResolver
         }
       }
     ]

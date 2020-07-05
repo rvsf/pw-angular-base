@@ -13,8 +13,8 @@ export class ManageCoursesDetailComponent implements OnInit {
   constructor(protected activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(({ project }) => {
-      this.course = project;
+    this.activatedRoute.data.subscribe(({ course }) => {
+      this.course = course;
     });
   }
 

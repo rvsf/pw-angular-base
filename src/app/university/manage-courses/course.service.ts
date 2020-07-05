@@ -14,6 +14,7 @@ import { element } from 'protractor';
 })
 export class CourseService {
 
+
   private static COURSE_KEY = 'course';
 
   private unsubscribe: Subject<void> = new Subject<void>();
@@ -71,4 +72,30 @@ export class CourseService {
       return courses})
 
  }
+
+ public getByKeyword(key:string,value:any):Promise<ICourse[]> {
+   if(key==='ECT' || key==='Hours'){
+    value = +value
+    if(key==='ECT')
+    key=key.toLocaleLowerCase()
+    else{
+      key='maxHours'
+    }
+   }else{
+     if(key==='Practice'){
+      debugger;
+      value=value==='true'?true:false;
+     }
+    key=key.toLocaleLowerCase()
+   }
+    return this.af.firestore.collection(CourseService.COURSE_KEY).where(key, '==' ,value).get().then(x=>{
+      const courses:ICourse[]=[]
+      x.docs.forEach((result)=>{
+        courses.push(result.data())
+    })
+    console.log(courses)
+      return courses})
+    }
+
+
 }

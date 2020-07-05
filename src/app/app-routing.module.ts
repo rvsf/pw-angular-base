@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { navbarRoute } from './layouts/navbar/navbar.route';
+import { ContactComponent } from './contact/contact.component';
 
 const LAYOUT_ROUTES = [navbarRoute];
 
@@ -18,8 +19,12 @@ const appRoutes: Routes = [
     loadChildren: './university/university.module#UniversityModule'
   },
   {
-    path: 'contacts',
-    loadChildren: './university/university.module#UniversityModule'
+    path: 'contact',
+    loadChildren: './contact/contact.module#ContactModule'
+  },
+  {
+    path: 'search',
+    loadChildren: './search/search.module#SearchModule'
   },
   ...LAYOUT_ROUTES
 ];

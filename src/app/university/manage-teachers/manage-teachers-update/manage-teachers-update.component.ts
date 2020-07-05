@@ -21,8 +21,8 @@ export class ManageTeachersUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm();
-    this.activatedRoute.data.subscribe(({project}) => {
-      this.updateForm(project);
+    this.activatedRoute.data.subscribe(({teacher}) => {
+      this.updateForm(teacher);
     });
   }
 
